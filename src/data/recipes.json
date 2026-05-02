@@ -1,0 +1,2003 @@
+[
+  {
+    "key": "AgingShed",
+    "name": "Aging Shed",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 30
+    },
+    "coins": 200,
+    "constructionSeconds": 0
+  },
+  {
+    "key": "Bakery",
+    "name": "Bakery",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 50,
+      "Stone": 20,
+      "Gold": 5
+    },
+    "coins": 200,
+    "constructionSeconds": 14400
+  },
+  {
+    "key": "Barn",
+    "name": "Barn",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 150,
+      "Iron": 10,
+      "Gold": 10
+    },
+    "coins": 200,
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "CompostBin",
+    "name": "Compost Bin",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 5,
+      "Stone": 5
+    },
+    "constructionSeconds": 3600
+  },
+  {
+    "key": "CraftingBox",
+    "name": "Crafting Box",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 100,
+      "Stone": 5
+    },
+    "constructionSeconds": 3600
+  },
+  {
+    "key": "CropMachine",
+    "name": "Crop Machine",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 1250,
+      "Iron": 125,
+      "Crimstone": 50
+    },
+    "coins": 8000,
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "Deli",
+    "name": "Deli",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 50,
+      "Stone": 50,
+      "Gold": 10
+    },
+    "coins": 300,
+    "constructionSeconds": 43200
+  },
+  {
+    "key": "FirePit",
+    "name": "Fire Pit",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 3,
+      "Stone": 2
+    },
+    "constructionSeconds": 0
+  },
+  {
+    "key": "FishMarket",
+    "name": "Fish Market",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 50,
+      "Iron": 10,
+      "Gold": 5
+    },
+    "constructionSeconds": 3600
+  },
+  {
+    "key": "Greenhouse",
+    "name": "Greenhouse",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 500,
+      "Stone": 100,
+      "Crimstone": 25,
+      "Oil": 100
+    },
+    "coins": 4800,
+    "constructionSeconds": 14400
+  },
+  {
+    "key": "HenHouse",
+    "name": "Hen House",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 30,
+      "Iron": 5,
+      "Gold": 5
+    },
+    "coins": 100,
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "Kitchen",
+    "name": "Kitchen",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 30,
+      "Stone": 5
+    },
+    "coins": 10,
+    "constructionSeconds": 1800
+  },
+  {
+    "key": "PetHouse",
+    "name": "Pet House",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 200,
+      "Stone": 100
+    },
+    "coins": 5000,
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "PremiumComposter",
+    "name": "Premium Composter",
+    "category": "Buildings",
+    "ingredients": {
+      "Gold": 50
+    },
+    "constructionSeconds": 14400
+  },
+  {
+    "key": "SmoothieShack",
+    "name": "Smoothie Shack",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 25,
+      "Stone": 25,
+      "Iron": 10
+    },
+    "constructionSeconds": 43200
+  },
+  {
+    "key": "Tent",
+    "name": "Tent",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 50
+    },
+    "coins": 20,
+    "constructionSeconds": 3600
+  },
+  {
+    "key": "Toolshed",
+    "name": "Toolshed",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 500,
+      "Iron": 30,
+      "Gold": 25,
+      "Axe": 100,
+      "Pickaxe": 50
+    },
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "TurboComposter",
+    "name": "Turbo Composter",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 50,
+      "Stone": 25
+    },
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "Warehouse",
+    "name": "Warehouse",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 250,
+      "Stone": 150,
+      "Potato": 5000,
+      "Pumpkin": 2000,
+      "Wheat": 500,
+      "Kale": 100
+    },
+    "constructionSeconds": 7200
+  },
+  {
+    "key": "WaterWell",
+    "name": "Water Well",
+    "category": "Buildings",
+    "ingredients": {
+      "Wood": 5
+    },
+    "coins": 100,
+    "constructionSeconds": 300
+  },
+  {
+    "key": "Workbench",
+    "name": "Workbench",
+    "category": "Buildings",
+    "ingredients": {},
+    "coins": 5,
+    "constructionSeconds": 60
+  },
+  {
+    "key": "BasicBear",
+    "name": "Basic Bear",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 200
+  },
+  {
+    "key": "BigTable",
+    "name": "Big Table",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 2000
+  },
+  {
+    "key": "BlackTile",
+    "name": "Black Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Sea Cucumber": 1,
+      "Eggplant": 1
+    }
+  },
+  {
+    "key": "BlueTile",
+    "name": "Blue Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Cockle Shell": 1,
+      "Blueberry": 1
+    }
+  },
+  {
+    "key": "BonniesTombstone",
+    "name": "Bonnie's Tombstone",
+    "category": "Decorations",
+    "ingredients": {
+      "Stone": 10
+    }
+  },
+  {
+    "key": "Bush",
+    "name": "Bush",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 5
+    },
+    "coins": 400
+  },
+  {
+    "key": "Cactus",
+    "name": "Cactus",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 80
+  },
+  {
+    "key": "ChestnutFungiStool",
+    "name": "Chestnut Fungi Stool",
+    "category": "Decorations",
+    "ingredients": {
+      "Toadstool Seat": 1,
+      "Wood": 10
+    },
+    "coins": 1600
+  },
+  {
+    "key": "Crate",
+    "name": "Crate",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 500
+  },
+  {
+    "key": "CrimsonCap",
+    "name": "Crimson Cap",
+    "category": "Decorations",
+    "ingredients": {
+      "Wild Mushroom": 20
+    },
+    "coins": 16000
+  },
+  {
+    "key": "DirtPath",
+    "name": "Dirt Path",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 200
+  },
+  {
+    "key": "EmptyPot",
+    "name": "Empty Pot",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 500
+  },
+  {
+    "key": "Fence",
+    "name": "Fence",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 5
+    },
+    "coins": 40
+  },
+  {
+    "key": "FieldMaple",
+    "name": "Field Maple",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 20
+    },
+    "coins": 200
+  },
+  {
+    "key": "GiantCabbage",
+    "name": "Giant Cabbage",
+    "category": "Decorations",
+    "ingredients": {
+      "Potion Ticket": 1000
+    }
+  },
+  {
+    "key": "GiantPotato",
+    "name": "Giant Potato",
+    "category": "Decorations",
+    "ingredients": {
+      "Potion Ticket": 500
+    }
+  },
+  {
+    "key": "GiantPumpkin",
+    "name": "Giant Pumpkin",
+    "category": "Decorations",
+    "ingredients": {
+      "Potion Ticket": 750
+    }
+  },
+  {
+    "key": "GoldenMaple",
+    "name": "Golden Maple",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 3
+    },
+    "coins": 200
+  },
+  {
+    "key": "GreenTile",
+    "name": "Green Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Seaweed": 1,
+      "Kale": 1
+    }
+  },
+  {
+    "key": "GrubnashsTombstone",
+    "name": "Grubnash's Tombstone",
+    "category": "Decorations",
+    "ingredients": {
+      "Stone": 20,
+      "Iron": 10
+    }
+  },
+  {
+    "key": "HighTable",
+    "name": "High Table",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 1000
+  },
+  {
+    "key": "LargePodium",
+    "name": "Large Podium",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 2000
+  },
+  {
+    "key": "LongTable",
+    "name": "Long Table",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 1000
+  },
+  {
+    "key": "MagicBean",
+    "name": "Magic Bean",
+    "category": "Decorations",
+    "ingredients": {
+      "Potion Ticket": 2000
+    }
+  },
+  {
+    "key": "MahoganyCap",
+    "name": "Mahogany Cap",
+    "category": "Decorations",
+    "ingredients": {
+      "Crimson Cap": 1,
+      "Wood": 100
+    },
+    "coins": 1600
+  },
+  {
+    "key": "PineTree",
+    "name": "Pine Tree",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 7
+    },
+    "coins": 200
+  },
+  {
+    "key": "PottedPotato",
+    "name": "Potted Potato",
+    "category": "Decorations",
+    "ingredients": {
+      "Potato": 200
+    },
+    "coins": 200
+  },
+  {
+    "key": "PottedPumpkin",
+    "name": "Potted Pumpkin",
+    "category": "Decorations",
+    "ingredients": {
+      "Pumpkin": 200
+    },
+    "coins": 800
+  },
+  {
+    "key": "PottedSunflower",
+    "name": "Potted Sunflower",
+    "category": "Decorations",
+    "ingredients": {
+      "Sunflower": 100
+    },
+    "coins": 80
+  },
+  {
+    "key": "PurpleTile",
+    "name": "Purple Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Clam Shell": 1,
+      "Beetroot": 1
+    }
+  },
+  {
+    "key": "RedMaple",
+    "name": "Red Maple",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 3
+    },
+    "coins": 200
+  },
+  {
+    "key": "RedTile",
+    "name": "Red Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Wooden Compass": 1,
+      "Apple": 1
+    }
+  },
+  {
+    "key": "RoyalPodium",
+    "name": "Royal Podium",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 2500
+  },
+  {
+    "key": "Shrub",
+    "name": "Shrub",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 3
+    },
+    "coins": 200
+  },
+  {
+    "key": "SquareTable",
+    "name": "Square Table",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 1000
+  },
+  {
+    "key": "StoneFence",
+    "name": "Stone Fence",
+    "category": "Decorations",
+    "ingredients": {
+      "Stone": 5
+    },
+    "coins": 80
+  },
+  {
+    "key": "Stool",
+    "name": "Stool",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 500
+  },
+  {
+    "key": "ToadstoolSeat",
+    "name": "Toadstool Seat",
+    "category": "Decorations",
+    "ingredients": {
+      "Wild Mushroom": 5
+    }
+  },
+  {
+    "key": "TownSign",
+    "name": "Town Sign",
+    "category": "Decorations",
+    "ingredients": {
+      "Wood": 100
+    },
+    "coins": 10000
+  },
+  {
+    "key": "WhiteTulips",
+    "name": "White Tulips",
+    "category": "Decorations",
+    "ingredients": {},
+    "coins": 80
+  },
+  {
+    "key": "YellowTile",
+    "name": "Yellow Tile",
+    "category": "Decorations",
+    "ingredients": {
+      "Sand": 1,
+      "Starfish": 1,
+      "Sunflower": 5
+    }
+  },
+  {
+    "key": "Antipasto",
+    "name": "Antipasto",
+    "category": "Food",
+    "ingredients": {
+      "Olive": 2,
+      "Grape": 2
+    },
+    "building": "Fire Pit",
+    "experience": 3000,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "AppleJuice",
+    "name": "Apple Juice",
+    "category": "Food",
+    "ingredients": {
+      "Apple": 5
+    },
+    "building": "Smoothie Shack",
+    "experience": 500,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "ApplePie",
+    "name": "Apple Pie",
+    "category": "Food",
+    "ingredients": {
+      "Apple": 5,
+      "Wheat": 10,
+      "Egg": 20
+    },
+    "building": "Bakery",
+    "experience": 720,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "BananaBlast",
+    "name": "Banana Blast",
+    "category": "Food",
+    "ingredients": {
+      "Banana": 10,
+      "Egg": 10
+    },
+    "building": "Smoothie Shack",
+    "experience": 1200,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "BeetrootBlaze",
+    "name": "Beetroot Blaze",
+    "category": "Food",
+    "ingredients": {
+      "Magic Mushroom": 2,
+      "Beetroot": 50
+    },
+    "experience": 2000,
+    "building": "Kitchen",
+    "cookingSeconds": 30
+  },
+  {
+    "key": "BeetrootCake",
+    "name": "Beetroot Cake",
+    "category": "Food",
+    "ingredients": {
+      "Beetroot": 100,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1250,
+    "cookingSeconds": 79200
+  },
+  {
+    "key": "BeetrootCake_2",
+    "name": "Beetroot Cake",
+    "category": "Food",
+    "ingredients": {
+      "Beetroot": 100,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "BlueCheese",
+    "name": "Blue Cheese",
+    "category": "Food",
+    "ingredients": {
+      "Cheese": 2,
+      "Blueberry": 10
+    },
+    "building": "Deli",
+    "experience": 6000,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "BlueberryJam",
+    "name": "Blueberry Jam",
+    "category": "Food",
+    "ingredients": {
+      "Blueberry": 5
+    },
+    "building": "Deli",
+    "experience": 500,
+    "cookingSeconds": 43200
+  },
+  {
+    "key": "BoiledEggs",
+    "name": "Boiled Eggs",
+    "category": "Food",
+    "ingredients": {
+      "Egg": 10
+    },
+    "building": "Fire Pit",
+    "experience": 90,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "BumpkinBroth",
+    "name": "Bumpkin Broth",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 10,
+      "Cabbage": 5
+    },
+    "building": "Fire Pit",
+    "experience": 96,
+    "cookingSeconds": 1200
+  },
+  {
+    "key": "BumpkinDetox",
+    "name": "Bumpkin Detox",
+    "category": "Food",
+    "ingredients": {
+      "Apple": 5,
+      "Orange": 5,
+      "Carrot": 10
+    },
+    "building": "Smoothie Shack",
+    "experience": 975,
+    "cookingSeconds": 7200
+  },
+  {
+    "key": "Bumpkinganoush",
+    "name": "Bumpkin ganoush",
+    "category": "Food",
+    "ingredients": {
+      "Eggplant": 30,
+      "Potato": 50,
+      "Parsnip": 10
+    },
+    "building": "Kitchen",
+    "experience": 1000,
+    "cookingSeconds": 18000
+  },
+  {
+    "key": "BumpkinRoast",
+    "name": "Bumpkin Roast",
+    "category": "Food",
+    "ingredients": {
+      "Mashed Potato": 20,
+      "Roast Veggies": 5
+    },
+    "building": "Kitchen",
+    "experience": 2500,
+    "cookingSeconds": 43200
+  },
+  {
+    "key": "BumpkinSalad",
+    "name": "Bumpkin Salad",
+    "category": "Food",
+    "ingredients": {
+      "Beetroot": 20,
+      "Parsnip": 10
+    },
+    "building": "Kitchen",
+    "experience": 290,
+    "cookingSeconds": 12600
+  },
+  {
+    "key": "CabbageCake",
+    "name": "Cabbage Cake",
+    "category": "Food",
+    "ingredients": {
+      "Cabbage": 90,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 860,
+    "cookingSeconds": 54000
+  },
+  {
+    "key": "CabbageCake_2",
+    "name": "Cabbage Cake",
+    "category": "Food",
+    "ingredients": {
+      "Cabbage": 90,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "CabbersnMash",
+    "name": "Cabbers n Mash",
+    "category": "Food",
+    "ingredients": {
+      "Mashed Potato": 10,
+      "Cabbage": 20
+    },
+    "building": "Fire Pit",
+    "experience": 250,
+    "cookingSeconds": 2400
+  },
+  {
+    "key": "CapreseSalad",
+    "name": "Caprese Salad",
+    "category": "Food",
+    "ingredients": {
+      "Cheese": 1,
+      "Tomato": 25,
+      "Kale": 20
+    },
+    "building": "Kitchen",
+    "experience": 6000,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "CarrotCake",
+    "name": "Carrot Cake",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 120,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 750,
+    "cookingSeconds": 46800
+  },
+  {
+    "key": "CarrotCake_2",
+    "name": "Carrot Cake",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 120,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "CarrotJuice",
+    "name": "Carrot Juice",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 30
+    },
+    "building": "Smoothie Shack",
+    "experience": 200,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "CauliflowerBurger",
+    "name": "Cauliflower Burger",
+    "category": "Food",
+    "ingredients": {
+      "Cauliflower": 15,
+      "Wheat": 5
+    },
+    "building": "Kitchen",
+    "experience": 255,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "CauliflowerCake",
+    "name": "Cauliflower Cake",
+    "category": "Food",
+    "ingredients": {
+      "Cauliflower": 60,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1190,
+    "cookingSeconds": 79200
+  },
+  {
+    "key": "CauliflowerCake_2",
+    "name": "Cauliflower Cake",
+    "category": "Food",
+    "ingredients": {
+      "Cauliflower": 60,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "Cheese",
+    "name": "Cheese",
+    "category": "Food",
+    "ingredients": {
+      "Milk": 3
+    },
+    "building": "Deli",
+    "experience": 1,
+    "cookingSeconds": 1200
+  },
+  {
+    "key": "Chowder",
+    "name": "Chowder",
+    "category": "Food",
+    "ingredients": {
+      "Beetroot": 10,
+      "Wheat": 10,
+      "Parsnip": 5,
+      "Anchovy": 3
+    },
+    "building": "Kitchen",
+    "experience": 1000,
+    "cookingSeconds": 28800
+  },
+  {
+    "key": "ClubSandwich",
+    "name": "Club Sandwich",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 100,
+      "Carrot": 25,
+      "Wheat": 5
+    },
+    "building": "Kitchen",
+    "experience": 170,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "Cornbread",
+    "name": "Cornbread",
+    "category": "Food",
+    "ingredients": {
+      "Corn": 15,
+      "Wheat": 5,
+      "Egg": 10
+    },
+    "building": "Bakery",
+    "experience": 600,
+    "cookingSeconds": 43200
+  },
+  {
+    "key": "CreamyCrabBite",
+    "name": "Creamy Crab Bite",
+    "category": "Food",
+    "ingredients": {
+      "Crab Stick": 1,
+      "Cheese": 3
+    },
+    "cookingSeconds": 0,
+    "building": "Kitchen",
+    "experience": 10000
+  },
+  {
+    "key": "CrimstoneInfusedFishOil",
+    "name": "Crimstone Infused Fish Oil",
+    "category": "Food",
+    "ingredients": {
+      "Fish Oil": 1,
+      "Crimstone": 1
+    },
+    "cookingSeconds": 0,
+    "building": "Kitchen",
+    "experience": 18000
+  },
+  {
+    "key": "EggplantCake",
+    "name": "Eggplant Cake",
+    "category": "Food",
+    "ingredients": {
+      "Eggplant": 30,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1400,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "FancyFries",
+    "name": "Fancy Fries",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 500,
+      "Potato": 500
+    },
+    "building": "Deli",
+    "experience": 1000,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "FermentedCarrots",
+    "name": "Fermented Carrots",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 20
+    },
+    "building": "Deli",
+    "experience": 250,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "FermentedFish",
+    "name": "Fermented Fish",
+    "category": "Food",
+    "ingredients": {
+      "Tuna": 6
+    },
+    "building": "Deli",
+    "experience": 3000,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "FishBurger",
+    "name": "Fish Burger",
+    "category": "Food",
+    "ingredients": {
+      "Beetroot": 10,
+      "Wheat": 10,
+      "Horse Mackerel": 1
+    },
+    "building": "Kitchen",
+    "experience": 1300,
+    "cookingSeconds": 7200
+  },
+  {
+    "key": "FishnChips",
+    "name": "Fish n Chips",
+    "category": "Food",
+    "ingredients": {
+      "Fancy Fries": 1,
+      "Halibut": 1
+    },
+    "building": "Kitchen",
+    "experience": 2000,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "FishOmelette",
+    "name": "Fish Omelette",
+    "category": "Food",
+    "ingredients": {
+      "Egg": 40,
+      "Surgeonfish": 1,
+      "Butterflyfish": 2
+    },
+    "building": "Kitchen",
+    "experience": 1500,
+    "cookingSeconds": 18000
+  },
+  {
+    "key": "FriedCalamari",
+    "name": "Fried Calamari",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 200,
+      "Wheat": 15,
+      "Squid": 1
+    },
+    "building": "Kitchen",
+    "experience": 1500,
+    "cookingSeconds": 18000
+  },
+  {
+    "key": "FriedTofu",
+    "name": "Fried Tofu",
+    "category": "Food",
+    "ingredients": {
+      "Soybean": 15,
+      "Sunflower": 200
+    },
+    "building": "Fire Pit",
+    "experience": 400,
+    "cookingSeconds": 5400
+  },
+  {
+    "key": "FruitSalad",
+    "name": "Fruit Salad",
+    "category": "Food",
+    "ingredients": {
+      "Apple": 1,
+      "Orange": 1,
+      "Blueberry": 1
+    },
+    "building": "Kitchen",
+    "experience": 225,
+    "cookingSeconds": 1800
+  },
+  {
+    "key": "FurikakeSprinkle",
+    "name": "Furikake Sprinkle",
+    "category": "Food",
+    "ingredients": {
+      "Fish Flake": 1,
+      "Seaweed": 1
+    },
+    "cookingSeconds": 0,
+    "building": "Fire Pit",
+    "experience": 1000
+  },
+  {
+    "key": "GoblinBrunch",
+    "name": "Goblin Brunch",
+    "category": "Food",
+    "ingredients": {
+      "Boiled Eggs": 5,
+      "Goblin's Treat": 1
+    },
+    "building": "Kitchen",
+    "experience": 2500,
+    "cookingSeconds": 43200
+  },
+  {
+    "key": "GoblinsTreat",
+    "name": "Goblin's Treat",
+    "category": "Food",
+    "ingredients": {
+      "Pumpkin": 10,
+      "Radish": 20,
+      "Cabbage": 10
+    },
+    "building": "Kitchen",
+    "experience": 500,
+    "cookingSeconds": 21600
+  },
+  {
+    "key": "GrapeJuice",
+    "name": "Grape Juice",
+    "category": "Food",
+    "ingredients": {
+      "Grape": 5,
+      "Radish": 20
+    },
+    "building": "Smoothie Shack",
+    "experience": 3300,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "Gumbo",
+    "name": "Gumbo",
+    "category": "Food",
+    "ingredients": {
+      "Potato": 50,
+      "Pumpkin": 30,
+      "Carrot": 20,
+      "Red Snapper": 3
+    },
+    "building": "Fire Pit",
+    "experience": 600,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "HoneyCake",
+    "name": "Honey Cake",
+    "category": "Food",
+    "ingredients": {
+      "Honey": 10,
+      "Wheat": 10,
+      "Egg": 20
+    },
+    "building": "Bakery",
+    "experience": 4000,
+    "cookingSeconds": 28800
+  },
+  {
+    "key": "HoneyCheddar",
+    "name": "Honey Cheddar",
+    "category": "Food",
+    "ingredients": {
+      "Cheese": 3,
+      "Honey": 5
+    },
+    "building": "Deli",
+    "experience": 15000,
+    "cookingSeconds": 43200
+  },
+  {
+    "key": "KaleMushroomPie",
+    "name": "Kale & Mushroom Pie",
+    "category": "Food",
+    "ingredients": {
+      "Wild Mushroom": 10,
+      "Kale": 5,
+      "Wheat": 5
+    },
+    "building": "Bakery",
+    "experience": 720,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "KaleOmelette",
+    "name": "Kale Omelette",
+    "category": "Food",
+    "ingredients": {
+      "Egg": 40,
+      "Kale": 5
+    },
+    "building": "Fire Pit",
+    "experience": 1250,
+    "cookingSeconds": 12600
+  },
+  {
+    "key": "KaleStew",
+    "name": "Kale Stew",
+    "category": "Food",
+    "ingredients": {
+      "Kale": 10
+    },
+    "building": "Fire Pit",
+    "experience": 400,
+    "cookingSeconds": 7200
+  },
+  {
+    "key": "LemonCheesecake",
+    "name": "Lemon Cheesecake",
+    "category": "Food",
+    "ingredients": {
+      "Lemon": 20,
+      "Cheese": 5,
+      "Egg": 40
+    },
+    "building": "Bakery",
+    "experience": 30000,
+    "cookingSeconds": 108000
+  },
+  {
+    "key": "MashedPotato",
+    "name": "Mashed Potato",
+    "category": "Food",
+    "ingredients": {
+      "Potato": 8
+    },
+    "building": "Fire Pit",
+    "experience": 3,
+    "cookingSeconds": 30
+  },
+  {
+    "key": "MushroomJacketPotatoes",
+    "name": "Mushroom Jacket Potatoes",
+    "category": "Food",
+    "ingredients": {
+      "Wild Mushroom": 10,
+      "Potato": 5
+    },
+    "building": "Kitchen",
+    "experience": 240,
+    "cookingSeconds": 600
+  },
+  {
+    "key": "MushroomSoup",
+    "name": "Mushroom Soup",
+    "category": "Food",
+    "ingredients": {
+      "Wild Mushroom": 5
+    },
+    "building": "Fire Pit",
+    "experience": 56,
+    "cookingSeconds": 600
+  },
+  {
+    "key": "OceansOlive",
+    "name": "Ocean's Olive",
+    "category": "Food",
+    "ingredients": {
+      "Olive Flounder": 1,
+      "Olive": 2
+    },
+    "building": "Kitchen",
+    "experience": 2000,
+    "cookingSeconds": 7200
+  },
+  {
+    "key": "OrangeCake",
+    "name": "Orange Cake",
+    "category": "Food",
+    "ingredients": {
+      "Orange": 5,
+      "Egg": 30,
+      "Wheat": 10
+    },
+    "building": "Bakery",
+    "experience": 730,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "OrangeJuice",
+    "name": "Orange Juice",
+    "category": "Food",
+    "ingredients": {
+      "Orange": 5
+    },
+    "building": "Smoothie Shack",
+    "experience": 375,
+    "cookingSeconds": 2700
+  },
+  {
+    "key": "Pancakes",
+    "name": "Pancakes",
+    "category": "Food",
+    "ingredients": {
+      "Wheat": 10,
+      "Egg": 10,
+      "Honey": 6
+    },
+    "building": "Kitchen",
+    "experience": 1000,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "ParsnipCake",
+    "name": "Parsnip Cake",
+    "category": "Food",
+    "ingredients": {
+      "Parsnip": 45,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1300,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "ParsnipCake_2",
+    "name": "Parsnip Cake",
+    "category": "Food",
+    "ingredients": {
+      "Parsnip": 45,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "PizzaMargherita",
+    "name": "Pizza Margherita",
+    "category": "Food",
+    "ingredients": {
+      "Tomato": 30,
+      "Cheese": 5,
+      "Wheat": 20
+    },
+    "building": "Fire Pit",
+    "experience": 25000,
+    "cookingSeconds": 72000
+  },
+  {
+    "key": "Popcorn",
+    "name": "Popcorn",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 100,
+      "Corn": 5
+    },
+    "building": "Fire Pit",
+    "experience": 200,
+    "cookingSeconds": 720
+  },
+  {
+    "key": "PotatoCake",
+    "name": "Potato Cake",
+    "category": "Food",
+    "ingredients": {
+      "Potato": 500,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 650,
+    "cookingSeconds": 37800
+  },
+  {
+    "key": "PotatoCake_2",
+    "name": "Potato Cake",
+    "category": "Food",
+    "ingredients": {
+      "Potato": 500,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "PowerSmoothie",
+    "name": "Power Smoothie",
+    "category": "Food",
+    "ingredients": {
+      "Blueberry": 10,
+      "Kale": 5
+    },
+    "building": "Smoothie Shack",
+    "experience": 775,
+    "cookingSeconds": 5400
+  },
+  {
+    "key": "PumpkinCake",
+    "name": "Pumpkin Cake",
+    "category": "Food",
+    "ingredients": {
+      "Pumpkin": 130,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 625,
+    "cookingSeconds": 37800
+  },
+  {
+    "key": "PumpkinCake_2",
+    "name": "Pumpkin Cake",
+    "category": "Food",
+    "ingredients": {
+      "Pumpkin": 130,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "PumpkinSoup",
+    "name": "Pumpkin Soup",
+    "category": "Food",
+    "ingredients": {
+      "Pumpkin": 10
+    },
+    "building": "Fire Pit",
+    "experience": 24,
+    "cookingSeconds": 180
+  },
+  {
+    "key": "PumpkinSoup_2",
+    "name": "Pumpkin Soup",
+    "category": "Food",
+    "ingredients": {
+      "Pumpkin": 5
+    },
+    "coins": 3
+  },
+  {
+    "key": "PurpleSmoothie",
+    "name": "Purple Smoothie",
+    "category": "Food",
+    "ingredients": {
+      "Blueberry": 5,
+      "Cabbage": 10
+    },
+    "building": "Smoothie Shack",
+    "experience": 310,
+    "cookingSeconds": 1800
+  },
+  {
+    "key": "QuickJuice",
+    "name": "Quick Juice",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 50,
+      "Pumpkin": 40
+    },
+    "building": "Smoothie Shack",
+    "experience": 100,
+    "cookingSeconds": 1800
+  },
+  {
+    "key": "RadishCake",
+    "name": "Radish Cake",
+    "category": "Food",
+    "ingredients": {
+      "Radish": 25,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1200,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "RadishCake_2",
+    "name": "Radish Cake",
+    "category": "Food",
+    "ingredients": {
+      "Radish": 25,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "RadishPie",
+    "name": "Radish Pie",
+    "category": "Food",
+    "ingredients": {
+      "Radish": 60
+    },
+    "coins": 300
+  },
+  {
+    "key": "RapidRoast",
+    "name": "Rapid Roast",
+    "category": "Food",
+    "ingredients": {
+      "Magic Mushroom": 1,
+      "Pumpkin": 40
+    },
+    "experience": 300,
+    "building": "Fire Pit",
+    "cookingSeconds": 10
+  },
+  {
+    "key": "ReindeerCarrot",
+    "name": "Reindeer Carrot",
+    "category": "Food",
+    "ingredients": {
+      "Carrot": 5
+    },
+    "building": "Fire Pit",
+    "experience": 36,
+    "cookingSeconds": 300
+  },
+  {
+    "key": "RhubarbTart",
+    "name": "Rhubarb Tart",
+    "category": "Food",
+    "ingredients": {
+      "Rhubarb": 3
+    },
+    "building": "Fire Pit",
+    "experience": 5,
+    "cookingSeconds": 60
+  },
+  {
+    "key": "RiceBun",
+    "name": "Rice Bun",
+    "category": "Food",
+    "ingredients": {
+      "Rice": 2,
+      "Wheat": 50
+    },
+    "building": "Fire Pit",
+    "experience": 2600,
+    "cookingSeconds": 18000
+  },
+  {
+    "key": "RoastVeggies",
+    "name": "Roast Veggies",
+    "category": "Food",
+    "ingredients": {
+      "Cauliflower": 15,
+      "Carrot": 10
+    },
+    "building": "Kitchen",
+    "experience": 170,
+    "cookingSeconds": 7200
+  },
+  {
+    "key": "RoastedCauliflower",
+    "name": "Roasted Cauliflower",
+    "category": "Food",
+    "ingredients": {
+      "Cauliflower": 30
+    },
+    "coins": 150
+  },
+  {
+    "key": "Sauerkraut",
+    "name": "Sauerkraut",
+    "category": "Food",
+    "ingredients": {
+      "Cabbage": 20
+    },
+    "building": "Deli",
+    "experience": 500,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "Sauerkraut_2",
+    "name": "Sauerkraut",
+    "category": "Food",
+    "ingredients": {
+      "Cabbage": 10
+    },
+    "coins": 25
+  },
+  {
+    "key": "SeafoodBasket",
+    "name": "Seafood Basket",
+    "category": "Food",
+    "ingredients": {
+      "Blowfish": 2,
+      "Napoleanfish": 2,
+      "Sunfish": 2
+    },
+    "building": "Kitchen",
+    "experience": 2200,
+    "cookingSeconds": 18000
+  },
+  {
+    "key": "ShroomSyrup",
+    "name": "Shroom Syrup",
+    "category": "Food",
+    "ingredients": {
+      "Magic Mushroom": 3,
+      "Honey": 20
+    },
+    "experience": 10000,
+    "building": "Deli",
+    "cookingSeconds": 10
+  },
+  {
+    "key": "SlowJuice",
+    "name": "Slow Juice",
+    "category": "Food",
+    "ingredients": {
+      "Grape": 10,
+      "Kale": 100
+    },
+    "building": "Smoothie Shack",
+    "experience": 7500,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "SourShake",
+    "name": "Sour Shake",
+    "category": "Food",
+    "ingredients": {
+      "Lemon": 20
+    },
+    "building": "Smoothie Shack",
+    "experience": 1000,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "SpaghettialLimone",
+    "name": "Spaghetti al Limone",
+    "category": "Food",
+    "ingredients": {
+      "Wheat": 10,
+      "Lemon": 15,
+      "Cheese": 3
+    },
+    "building": "Kitchen",
+    "experience": 15000,
+    "cookingSeconds": 54000
+  },
+  {
+    "key": "SteamedRedRice",
+    "name": "Steamed Red Rice",
+    "category": "Food",
+    "ingredients": {
+      "Rice": 3,
+      "Beetroot": 50
+    },
+    "building": "Kitchen",
+    "experience": 3000,
+    "cookingSeconds": 14400
+  },
+  {
+    "key": "SunflowerCake",
+    "name": "Sunflower Cake",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 1000,
+      "Wheat": 10,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 525,
+    "cookingSeconds": 23400
+  },
+  {
+    "key": "SunflowerCake_2",
+    "name": "Sunflower Cake",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 1000,
+      "Wheat": 10,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "SunflowerCrunch",
+    "name": "Sunflower Crunch",
+    "category": "Food",
+    "ingredients": {
+      "Sunflower": 300
+    },
+    "building": "Kitchen",
+    "experience": 50,
+    "cookingSeconds": 600
+  },
+  {
+    "key": "SurimiRiceBowl",
+    "name": "Surimi Rice Bowl",
+    "category": "Food",
+    "ingredients": {
+      "Fish Stick": 1,
+      "Rice": 1,
+      "Onion": 1
+    },
+    "cookingSeconds": 0,
+    "building": "Kitchen",
+    "experience": 3000
+  },
+  {
+    "key": "SushiRoll",
+    "name": "Sushi Roll",
+    "category": "Food",
+    "ingredients": {
+      "Angelfish": 1,
+      "Seaweed": 1,
+      "Rice": 2
+    },
+    "building": "Kitchen",
+    "experience": 2000,
+    "cookingSeconds": 3600
+  },
+  {
+    "key": "TheLot",
+    "name": "The Lot",
+    "category": "Food",
+    "ingredients": {
+      "Blueberry": 1,
+      "Orange": 1,
+      "Grape": 1,
+      "Apple": 1,
+      "Banana": 1
+    },
+    "building": "Smoothie Shack",
+    "experience": 1500,
+    "cookingSeconds": 12600
+  },
+  {
+    "key": "TofuScramble",
+    "name": "Tofu Scramble",
+    "category": "Food",
+    "ingredients": {
+      "Soybean": 20,
+      "Egg": 20,
+      "Cauliflower": 10
+    },
+    "building": "Kitchen",
+    "experience": 1000,
+    "cookingSeconds": 10800
+  },
+  {
+    "key": "WheatCake",
+    "name": "Wheat Cake",
+    "category": "Food",
+    "ingredients": {
+      "Wheat": 35,
+      "Egg": 30
+    },
+    "building": "Bakery",
+    "experience": 1100,
+    "cookingSeconds": 86400
+  },
+  {
+    "key": "WheatCake_2",
+    "name": "Wheat Cake",
+    "category": "Food",
+    "ingredients": {
+      "Wheat": 35,
+      "Egg": 15
+    }
+  },
+  {
+    "key": "Chicken",
+    "name": "Chicken",
+    "category": "Other",
+    "ingredients": {},
+    "coins": 200
+  },
+  {
+    "key": "Cow",
+    "name": "Cow",
+    "category": "Other",
+    "ingredients": {},
+    "coins": 16000
+  },
+  {
+    "key": "Pig",
+    "name": "Pig",
+    "category": "Other",
+    "ingredients": {},
+    "coins": 6400
+  },
+  {
+    "key": "Sheep",
+    "name": "Sheep",
+    "category": "Other",
+    "ingredients": {},
+    "coins": 6400
+  },
+  {
+    "key": "Axe",
+    "name": "Axe",
+    "category": "Tools",
+    "ingredients": {},
+    "coins": 20
+  },
+  {
+    "key": "Axe_2",
+    "name": "Axe",
+    "category": "Tools",
+    "ingredients": {},
+    "coins": 320
+  },
+  {
+    "key": "CrabPot",
+    "name": "Crab Pot",
+    "category": "Tools",
+    "ingredients": {
+      "Feather": 5,
+      "Wool": 3
+    },
+    "coins": 250
+  },
+  {
+    "key": "CrabPot_2",
+    "name": "Crab Pot",
+    "category": "Tools",
+    "ingredients": {
+      "Feather": 5,
+      "Wool": 3
+    },
+    "coins": 250
+  },
+  {
+    "key": "GoldPickaxe",
+    "name": "Gold Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Gold": 3
+    },
+    "coins": 100
+  },
+  {
+    "key": "GoldPickaxe_2",
+    "name": "Gold Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Gold": 3
+    },
+    "coins": 2240
+  },
+  {
+    "key": "Hammer",
+    "name": "Hammer",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 5,
+      "Stone": 5
+    },
+    "coins": 1600
+  },
+  {
+    "key": "IronPickaxe",
+    "name": "Iron Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Iron": 5
+    },
+    "coins": 80
+  },
+  {
+    "key": "IronPickaxe_2",
+    "name": "Iron Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 5,
+      "Iron": 3
+    },
+    "coins": 1600
+  },
+  {
+    "key": "MarinerPot",
+    "name": "Mariner Pot",
+    "category": "Tools",
+    "ingredients": {
+      "Feather": 10,
+      "Merino Wool": 10
+    },
+    "coins": 500
+  },
+  {
+    "key": "MarinerPot_2",
+    "name": "Mariner Pot",
+    "category": "Tools",
+    "ingredients": {
+      "Feather": 10,
+      "Merino Wool": 10
+    },
+    "coins": 500
+  },
+  {
+    "key": "OilDrill",
+    "name": "Oil Drill",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 20,
+      "Iron": 9,
+      "Leather": 10
+    },
+    "coins": 100
+  },
+  {
+    "key": "OilDrill_2",
+    "name": "Oil Drill",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 25,
+      "Iron": 10
+    },
+    "coins": 2240
+  },
+  {
+    "key": "PestNet",
+    "name": "Pest Net",
+    "category": "Tools",
+    "ingredients": {
+      "Wool": 2
+    },
+    "coins": 50
+  },
+  {
+    "key": "Pickaxe",
+    "name": "Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3
+    },
+    "coins": 20
+  },
+  {
+    "key": "Pickaxe_2",
+    "name": "Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 2
+    },
+    "coins": 320
+  },
+  {
+    "key": "Rod",
+    "name": "Rod",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Stone": 1
+    },
+    "coins": 20
+  },
+  {
+    "key": "Rod_2",
+    "name": "Rod",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 5
+    },
+    "coins": 1600
+  },
+  {
+    "key": "SaltRake",
+    "name": "Salt Rake",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3
+    },
+    "coins": 20
+  },
+  {
+    "key": "SandDrill",
+    "name": "Sand Drill",
+    "category": "Tools",
+    "ingredients": {
+      "Oil": 1,
+      "Crimstone": 1,
+      "Wood": 3,
+      "Leather": 1
+    },
+    "coins": 40
+  },
+  {
+    "key": "SandShovel",
+    "name": "Sand Shovel",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 2,
+      "Stone": 1
+    },
+    "coins": 20
+  },
+  {
+    "key": "Shovel",
+    "name": "Shovel",
+    "category": "Tools",
+    "ingredients": {
+      "Rusty Shovel": 1,
+      "Iron": 10,
+      "Wood": 20
+    }
+  },
+  {
+    "key": "StonePickaxe",
+    "name": "Stone Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Stone": 5
+    },
+    "coins": 20
+  },
+  {
+    "key": "StonePickaxe_2",
+    "name": "Stone Pickaxe",
+    "category": "Tools",
+    "ingredients": {
+      "Wood": 3,
+      "Stone": 3
+    },
+    "coins": 640
+  }
+]

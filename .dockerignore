@@ -1,0 +1,31 @@
+# Keep the build context small & prevent leaking dev artifacts into the image.
+node_modules
+.next
+.git
+.gitignore
+.github
+.vscode
+.idea
+.windsurf
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Local-only data — Railway uses a mounted volume instead.
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Local env files (Railway provides env via dashboard).
+.env
+.env.local
+.env.*.local
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor scratch files from earlier scraping sessions.
+scripts/_sfl_*.ts
