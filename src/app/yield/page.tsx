@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { IconTrendingUp, IconWarning } from "@/components/icons";
 import { Sparkline } from "@/components/sparkline";
+import buffsJson from "@/data/buffs.json";
 
 type Category = "Crop" | "Greenhouse Crop" | "Fruit" | "Greenhouse Fruit";
 
@@ -26,7 +27,20 @@ interface YieldRow {
   shopFlowerPerHour: number;
   sparkline: number[];
   pctChange24h: number | null;
+  boostedYield: number;
+  boostedSeconds: number;
 }
+
+/** Collectibles that occupy the same slot — only the strongest applies. The
+ *  analyzer enforces this server-side; UI uses it to warn Master when they
+ *  pick two items from the same chain in the simulator. */
+const BUFF_CHAINS: string[][] = [
+  ["Basic Scarecrow", "Nancy", "Scarecrow", "Kuebiko"],
+];
+
+/** Which buff belongs to which chain (reverse lookup). */
+const BUFF_TO_CHAIN = new Map<string, number>();
+BUFF_CHAINS.forEach((chain, idx) => chain.forEach((n) => BUFF_TO_CHAIN.set(n, idx)));
 
 type SortKey =
   | "flowerPerHour"
@@ -75,20 +89,25 @@ export default function YieldPage() {
   const [sort, setSort] = useState<SortKey>("flowerPerHour");
   const [hideUnpriced, setHideUnpriced] = useState(true);
   const [maxLevel, setMaxLevel] = useState<number | null>(null);
+  const [manualBuffs, setManualBuffs] = useState<string[]>([]);
+  const [detectedBuffs, setDetectedBuffs] = useState<string[]>([]);
 
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
+      setLoading(true);
       try {
-        const res = await fetch("/api/yield");
+        const qs = manualBuffs.length > 0 ? `?buffs=${manualBuffs.join(",")}` : "";
+        const res = await fetch(`/api/yield${qs}`);
         const json = await res.json();
         if (!res.ok) throw new Error(json.error ?? "Failed to load yields");
         if (cancelled) return;
-        setRows(json.rows);
+        setRows(json.rows ?? []);
+        setDetectedBuffs(json.detectedBuffs ?? []);
         setMeta({
           fetchedAt: json.fetchedAt,
           flowerToUsd: json.flowerToUsd,
-          unpriced: json.unpriced,
+          unpriced: json.unpriced ?? [],
         });
       } catch (e) {
         if (!cancelled) setError(e instanceof Error ? e.message : String(e));
@@ -100,7 +119,25 @@ export default function YieldPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [manualBuffs]);
+
+  /** Detect chain conflicts so we can warn Master in the picker. */
+  const chainConflicts = useMemo(() => {
+    const perChain = new Map<number, string[]>();
+    for (const b of manualBuffs) {
+      const idx = BUFF_TO_CHAIN.get(b);
+      if (idx === undefined) continue;
+      if (!perChain.has(idx)) perChain.set(idx, []);
+      perChain.get(idx)!.push(b);
+    }
+    return Array.from(perChain.values()).filter((list) => list.length > 1);
+  }, [manualBuffs]);
+
+  const toggleBuff = (name: string) => {
+    setManualBuffs((prev) =>
+      prev.includes(name) ? prev.filter((x) => x !== name) : [...prev, name],
+    );
+  };
 
   const filtered = useMemo(() => {
     let r = rows;
@@ -135,6 +172,62 @@ export default function YieldPage() {
           Ranking produce berdasarkan <span className="text-zinc-300">FLOWER per jam per plot</span>
           {" "}— memperhitungkan harga P2P live × waktu tumbuh. Bukan sekadar harga tertinggi.
         </p>
+      </div>
+
+      {/* Buff awareness */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-3">
+          <div className="text-[10px] uppercase tracking-wider font-semibold text-emerald-400 mb-1.5">
+            Buff aktif (terdeteksi dari farm)
+          </div>
+          {detectedBuffs.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {detectedBuffs.map((b) => (
+                <span key={b} className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">
+                  {b}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className="text-[11px] text-zinc-500 italic">
+              Belum ada buff terdeteksi (set SFL_API_KEY + SFL_FARM_ID di Railway env).
+            </div>
+          )}
+        </div>
+
+        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-3">
+          <div className="text-[10px] uppercase tracking-wider font-semibold text-amber-400 mb-1.5">
+            Simulasi buff (klik untuk pakai)
+          </div>
+          <div className="flex flex-wrap gap-1">
+            {[...Object.keys(buffsJson.cropBoosts), ...Object.keys(buffsJson.fruitBoosts)].map((b) => {
+              const active = manualBuffs.includes(b);
+              const chainIdx = BUFF_TO_CHAIN.get(b);
+              const conflicted = active && chainIdx !== undefined && chainConflicts.some((list) => list.includes(b));
+              return (
+                <button
+                  key={b}
+                  onClick={() => toggleBuff(b)}
+                  className={`text-[10px] px-2 py-0.5 rounded border transition-all ${
+                    active
+                      ? conflicted
+                        ? "bg-rose-500/20 border-rose-400 text-rose-200"
+                        : "bg-amber-500/30 border-amber-400 text-amber-100"
+                      : "border-zinc-700 text-zinc-500 hover:border-amber-500/50 hover:text-amber-300"
+                  }`}
+                >
+                  {b}
+                </button>
+              );
+            })}
+          </div>
+          {chainConflicts.length > 0 && (
+            <div className="mt-2 text-[10px] text-rose-300 flex items-center gap-1">
+              <IconWarning className="size-3" />
+              Chain conflict: hanya tier terkuat yang dihitung ({chainConflicts.flat().join(" + ")}).
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Top 3 hero cards */}
@@ -262,6 +355,7 @@ export default function YieldPage() {
                 <th className="text-right px-3 py-2.5">Harga P2P</th>
                 <th className="text-center px-3 py-2.5">Trend 24h</th>
                 <th className="text-right px-3 py-2.5">$FLOWER/jam</th>
+                <th className="text-right px-3 py-2.5">Buff Δ</th>
                 <th className="text-right px-3 py-2.5">/ 24h</th>
                 <th className="text-right px-3 py-2.5">Net/jam</th>
                 <th className="text-right px-3 py-2.5">Payback benih</th>
@@ -310,6 +404,24 @@ export default function YieldPage() {
                   <td className="px-3 py-2 text-right font-mono text-emerald-500">
                     {r.hasP2P ? r.flowerPerHour.toFixed(4) : "—"}
                   </td>
+                  <td className="px-3 py-2 text-right text-[10px] font-mono">
+                    {(() => {
+                      const base =
+                        r.hasP2P && r.plantSeconds > 0
+                          ? (r.p2pPrice * r.yieldPerPlant) / (r.plantSeconds / 3600)
+                          : 0;
+                      if (!base) return <span className="text-zinc-600">—</span>;
+                      const delta = ((r.flowerPerHour - base) / base) * 100;
+                      if (Math.abs(delta) < 0.05) return <span className="text-zinc-600">0%</span>;
+                      const cls = delta > 0 ? "text-emerald-400" : "text-rose-400";
+                      return (
+                        <span className={cls} title={`base ${base.toFixed(4)} → ${r.flowerPerHour.toFixed(4)}`}>
+                          {delta > 0 ? "+" : ""}
+                          {delta.toFixed(1)}%
+                        </span>
+                      );
+                    })()}
+                  </td>
                   <td className="px-3 py-2 text-right font-mono text-xs text-zinc-400">
                     {r.hasP2P ? r.dailyFlower.toFixed(3) : "—"}
                   </td>
@@ -356,7 +468,12 @@ export default function YieldPage() {
             benih sangat kecil, jadi selisihnya minor.
           </li>
           <li>
-            Belum termasuk bonus scarecrow / wearable / skill. Real yield Master bisa lebih tinggi.
+            Buff collectible (Scarecrow / Kuebiko / Victoria Sisters / dll.) sudah diperhitungkan
+            via auto-detect + picker manual. Chain conflict otomatis di-resolve ke tier terkuat.
+          </li>
+          <li>
+            Belum termasuk bonus <em>wearable</em> + bumpkin <em>skill</em> (akan ditambah di
+            iterasi berikutnya).
           </li>
         </ul>
       </div>
