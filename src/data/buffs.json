@@ -1,0 +1,36 @@
+{
+  "cropBoosts": {
+    "Basic Scarecrow": { "speed": 0.2, "yield": 0 },
+    "Scary Mike": { "speed": 0, "yield": 0.2, "crops": ["Potato", "Pumpkin", "Carrot", "Cabbage"] },
+    "Laurie the Chuckle Crow": { "speed": 0, "yield": 0.2, "crops": ["Eggplant", "Corn", "Onion", "Radish"] },
+    "Nancy": { "speed": 0.15, "yield": 0 },
+    "Scarecrow": { "speed": 0.15, "yield": 0.2 },
+    "Kuebiko": { "speed": 0.15, "yield": 0.2, "freeSeeds": true },
+    "Lunar Calendar": { "speed": 0.1, "yield": 0 },
+    "Peeled Potato": { "speed": 0, "yield": 1, "crops": ["Potato"] },
+    "Victoria Sisters": { "speed": 0, "yield": 0.2, "crops": ["Pumpkin"] },
+    "Easter Bunny": { "speed": 0, "yield": 0.2, "crops": ["Carrot"] },
+    "Cabbage Boy": { "speed": 0, "yield": 0.25, "crops": ["Cabbage"] },
+    "Cabbage Girl": { "speed": 0.5, "yield": 0, "crops": ["Cabbage"] },
+    "Golden Cauliflower": { "speed": 0, "yield": 1, "crops": ["Cauliflower"] },
+    "Mysterious Parsnip": { "speed": 0.5, "yield": 0, "crops": ["Parsnip"] },
+    "Purple Trail": { "speed": 0, "yield": 0.2, "crops": ["Eggplant"] },
+    "Obie": { "speed": 0.25, "yield": 0, "crops": ["Eggplant"] },
+    "Maximus": { "speed": 0, "yield": 1, "crops": ["Eggplant"] },
+    "Poppy": { "speed": 0, "yield": 0.1, "crops": ["Corn"] },
+    "Kernaldo": { "speed": 0.25, "yield": 0, "crops": ["Corn"] },
+    "Queen Cornelia": { "speed": 0, "yield": 1, "crops": ["Corn"] }
+  },
+  "fruitBoosts": {
+    "Squirrel Monkey": { "speed": 0.5, "yield": 0, "fruits": ["Orange"] },
+    "Nana": { "speed": 0.1, "yield": 0, "fruits": ["Banana"] },
+    "Banana Chicken": { "speed": 0, "yield": 0.1, "fruits": ["Banana"] },
+    "Apple Pie": { "speed": 0, "yield": 0.2, "fruits": ["Apple"] }
+  },
+  "globalBoosts": {
+    "Axe": { "woodYield": 1 },
+    "Pickaxe": { "stoneYield": 1 },
+    "Stone Pickaxe": { "ironYield": 1 },
+    "Iron Pickaxe": { "goldYield": 1 }
+  }
+}
