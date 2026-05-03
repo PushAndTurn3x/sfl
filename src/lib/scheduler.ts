@@ -17,7 +17,9 @@ import {
   markNotifiedOnce,
   prunePriceSnapshots,
   saveSnapshot,
+  getPriceHistory,
 } from "./db";
+import { analyzeMarket, DEFAULT_KEY_ITEMS } from "./market-analyzer";
 import { getPrices } from "./prices";
 import { sendTelegramMessage, esc } from "./telegram";
 
@@ -68,6 +70,46 @@ async function capturePriceSnapshot(): Promise<void> {
   const p2p = snap.prices.p2p ?? {};
   if (Object.keys(p2p).length === 0) return;
   insertPriceSnapshots(p2p, snap.fetchedAt);
+
+  // Market Analysis for key items. DEFAULT_KEY_ITEMS contains the liquid
+  // resources/produce that are always priced on sfl.world. Master can extend
+  // the list via MARKET_SIGNAL_ITEMS env (comma-separated).
+  const envItems = (process.env.MARKET_SIGNAL_ITEMS ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const keyItems = envItems.length > 0 ? envItems : [...DEFAULT_KEY_ITEMS];
+
+  for (const item of keyItems) {
+    if (!p2p[item]) continue;
+
+    // Analyze against last 24h of captured snapshots.
+    const history = getPriceHistory(item, Date.now() - 24 * 60 * 60 * 1000);
+    const analysis = analyzeMarket(item, history);
+
+    // Only alert on STRONG signals with high confidence. Dedup per day +
+    // direction so a flip-flopping RSI within one day doesn't spam us, but
+    // a genuine reversal next day still fires.
+    const isStrong =
+      analysis.signal === "STRONG BUY" || analysis.signal === "STRONG SELL";
+    if (!isStrong || analysis.confidence < 70) continue;
+
+    const direction = analysis.signal === "STRONG BUY" ? "buy" : "sell";
+    const dayBucket = Math.floor(Date.now() / (24 * 60 * 60 * 1000));
+    const key = `market-alert:${item}:${direction}:${dayBucket}`;
+    if (!markNotifiedOnce(key)) continue;
+
+    const emoji = direction === "buy" ? "🟢" : "🔴";
+    const text =
+      `<b>🚨 MARKET ALERT!</b>\n\n` +
+      `Item: <b>${esc(item)}</b>\n` +
+      `Signal: <b>${analysis.signal} ${emoji}</b>\n` +
+      `Price: <code>${analysis.price.toFixed(5)}</code> FLOWER\n` +
+      `RSI: <code>${analysis.rsi.toFixed(1)}</code>  EMA: <code>${analysis.ema.toFixed(5)}</code>\n\n` +
+      `<i>Confidence ${analysis.confidence}% · ${analysis.samples} samples</i>`;
+    await sendTelegramMessage(text);
+  }
+
   // Prune old rows every ~12 ticks (~1h) so we don't do it on every poll.
   if (++pruneCounter % 12 === 0) {
     const removed = prunePriceSnapshots(PRICE_RETENTION_MS);
