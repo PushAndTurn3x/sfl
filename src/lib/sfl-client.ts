@@ -15,6 +15,7 @@
  */
 
 import { config } from "./config";
+import { normalizeInventoryKeys } from "./item-ids";
 import type {
   ActiveBuff,
   Animal,
@@ -122,22 +123,37 @@ class HttpSFLClient implements SFLClient {
   }
 
   async getRaw(): Promise<unknown> {
-    // Try endpoints in order of preference. Stop at first success.
-    const candidates = [
-      // Confirmed working with x-api-key (community tier).
+    // Endpoint preference depends on auth tier:
+    //   - JWT tier exposes richer data via /data and /portal endpoints but
+    //     returns inventory keyed by numeric token IDs (mapped back to names
+    //     in normalize() via normalizeInventoryKeys).
+    //   - x-api-key community tier returns human-readable names but a more
+    //     restricted subset of farm state.
+    // When JWT is configured we try JWT endpoints first; x-api-key paths act
+    // as a resilient fallback.
+    const jwtCandidates = this.jwt
+      ? [
+          `/data?type=session&farmId=${this.farmId}`,
+          `/portal/${this.farmId}/player`,
+          `/v1/data/${this.farmId}`,
+        ]
+      : [];
+    const communityCandidates = [
       `/community/farms/${this.farmId}`,
-      // Fallbacks kept for resilience if SFL renames the path in a future chapter.
       `/v1/farms/${this.farmId}`,
       `/farms/${this.farmId}`,
       `/community/farm/${this.farmId}`,
     ];
+    const candidates = [...jwtCandidates, ...communityCandidates];
+
     for (const c of candidates) {
       const data = await this.tryFetch(c);
       if (data) return data;
     }
     throw new Error(
       "[sfl-client] Could not fetch farm data from any known endpoint. " +
-        "Check SFL_API_BASE_URL, SFL_API_KEY, SFL_FARM_ID, and your access tier.",
+        "Check SFL_API_BASE_URL and at least one of SFL_API_KEY / SFL_JWT, " +
+        "plus SFL_FARM_ID.",
     );
   }
 
@@ -161,12 +177,11 @@ function normalize(raw: unknown, farmId: string): FarmState {
 
   const farm = (farmEnvelope ?? {}) as Record<string, unknown>;
 
-  const inventory = (farm.inventory ?? {}) as Record<string, string | number>;
-  const balances: BalanceMap = {};
-  for (const [k, v] of Object.entries(inventory)) {
-    const n = typeof v === "number" ? v : parseFloat(v);
-    if (!Number.isNaN(n)) balances[k] = n;
-  }
+  // Some JWT endpoints key inventory by numeric token ID; community x-api-key
+  // endpoints use human-readable names. normalizeInventoryKeys handles both
+  // transparently (unknown IDs survive as "Unknown #<id>" for visibility).
+  const inventoryRaw = (farm.inventory ?? {}) as Record<string, string | number>;
+  const balances: BalanceMap = normalizeInventoryKeys(inventoryRaw);
 
   // Post-migration: `balance` is the on-chain $FLOWER balance.
   // `coins` is the in-game soft currency.
