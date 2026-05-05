@@ -15,6 +15,7 @@ import {
   IconSparkles,
   IconWarning,
 } from "@/components/icons";
+import { InventoryPanel } from "@/components/InventoryPanel";
 
 interface FarmResponse extends FarmState {
   source?: string;
@@ -351,29 +352,8 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      {/* Top balances */}
-      <Card title="Top balances" subtitle={farm ? `${Object.keys(farm.balances).length} items` : undefined}>
-        {!farm ? null : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-sm">
-            {Object.entries(farm.balances)
-              .sort((a, b) => b[1] - a[1])
-              .slice(0, 24)
-              .map(([k, v]) => (
-                <div
-                  key={k}
-                  className="flex items-center justify-between rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-1.5 bg-zinc-50/50 dark:bg-zinc-900/40"
-                >
-                  <span className="truncate text-xs" title={k}>
-                    {k}
-                  </span>
-                  <span className="font-mono text-xs text-zinc-600 dark:text-zinc-400 font-medium">
-                    {fmt(v)}
-                  </span>
-                </div>
-              ))}
-          </div>
-        )}
-      </Card>
+      {/* Inventory (full, searchable, grouped by category) */}
+      {farm && <InventoryPanel balances={farm.balances} />}
 
       {farm?.fetchedAt && (
         <div className="text-xs text-zinc-500 text-center pt-2">
