@@ -155,6 +155,112 @@ export async function getMarketplaceCategory(
   return promise;
 }
 
+// ============================================================================
+// Economies API (Game User JWT, official endpoints)
+// ============================================================================
+//
+// Per the Sunflower Land "Other useful APIs & data" docs:
+//   GET /data?type=marketplaceEconomies
+//     -> leaderboard-style economy rows (the global UGC economy list)
+//   GET /collection/economies/{id}?type=economies&economy={slug}
+//     -> detail for one tradeable: listings + offers + sales history
+//
+// Both require a *Game User JWT* (NOT a Portal JWT). When a portal-tier token
+// is supplied, the API returns 403 with a "feature gating" message; we
+// surface that as gated=true so callers can render a helpful hint.
+
+interface JwtFetchResult<T = unknown> {
+  ok: boolean;
+  status: number;
+  /** True when the response was a 403 — signals wrong JWT tier or farm
+   *  feature gating per the SFL docs. */
+  gated: boolean;
+  data: T | null;
+  fetchedAt: number;
+}
+
+/** Generic JWT GET helper that respects the same in-memory cache. */
+async function jwtGet<T = unknown>(
+  cacheKey: string,
+  path: string,
+  opts: { force?: boolean } = {},
+): Promise<JwtFetchResult<T>> {
+  const headers = jwtHeaders();
+  if (!headers) {
+    throw new Error("SFL_JWT not set — cannot reach JWT-tier endpoints.");
+  }
+  const now = Date.now();
+  if (!opts.force) {
+    const cached = cache.get(cacheKey);
+    if (cached && cached.expiresAt > now) {
+      // CategoryResult and JwtFetchResult share enough shape that callers
+      // never look at the wrong fields — but we still cast carefully.
+      return cached.result as unknown as JwtFetchResult<T>;
+    }
+  }
+  const existing = inflight.get(cacheKey);
+  if (existing) return existing as unknown as Promise<JwtFetchResult<T>>;
+
+  const base = config.sfl.baseUrl.replace(/\/$/, "");
+  const url = `${base}${path}`;
+  const promise = (async (): Promise<JwtFetchResult<T>> => {
+    let status = 0;
+    let data: T | null = null;
+    let ok = false;
+    try {
+      const res = await fetch(url, { headers, cache: "no-store" });
+      status = res.status;
+      ok = res.ok;
+      if (ok) {
+        try {
+          data = (await res.json()) as T;
+        } catch {
+          data = null;
+        }
+      }
+    } catch (e) {
+      console.warn(`[marketplace-jwt] ${path} threw`, e);
+    }
+    const result: JwtFetchResult<T> = {
+      ok,
+      status,
+      gated: status === 403,
+      data,
+      fetchedAt: Date.now(),
+    };
+    if (ok) {
+      cache.set(cacheKey, {
+        expiresAt: Date.now() + CACHE_MS,
+        result: result as unknown as CategoryResult,
+      });
+    }
+    return result;
+  })().finally(() => {
+    inflight.delete(cacheKey);
+  });
+  inflight.set(cacheKey, promise as unknown as Promise<CategoryResult>);
+  return promise;
+}
+
+/** Leaderboard-style economy rows. */
+export function getMarketplaceEconomies(opts: { force?: boolean } = {}) {
+  return jwtGet<unknown>("economies:list", "/data?type=marketplaceEconomies", opts);
+}
+
+/**
+ * Detail (listings, offers, sales history) for a single tradeable.
+ * @param id      The collection id (token id or economy-specific identifier)
+ * @param economy The economy slug, e.g. "collectibles" / "wearables"
+ */
+export function getEconomyDetail(
+  id: string | number,
+  economy: string,
+  opts: { force?: boolean } = {},
+) {
+  const path = `/collection/economies/${encodeURIComponent(String(id))}?type=economies&economy=${encodeURIComponent(economy)}`;
+  return jwtGet<unknown>(`economy:${economy}:${id}`, path, opts);
+}
+
 /** Fetches every category in parallel. */
 export async function getAllMarketplace(
   opts: { force?: boolean; filters?: readonly MarketplaceFilter[] } = {},
