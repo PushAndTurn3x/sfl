@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { IconTrendingUp, IconWarning } from "@/components/icons";
 import { Sparkline } from "@/components/sparkline";
+import { InventoryPanel } from "@/components/InventoryPanel";
 import buffsJson from "@/data/buffs.json";
 
 type Category = "Crop" | "Greenhouse Crop" | "Fruit" | "Greenhouse Fruit";
@@ -91,6 +92,7 @@ export default function YieldPage() {
   const [maxLevel, setMaxLevel] = useState<number | null>(null);
   const [manualBuffs, setManualBuffs] = useState<string[]>([]);
   const [detectedBuffs, setDetectedBuffs] = useState<string[]>([]);
+  const [balances, setBalances] = useState<Record<string, number>>({});
 
   useEffect(() => {
     let cancelled = false;
@@ -98,17 +100,25 @@ export default function YieldPage() {
       setLoading(true);
       try {
         const qs = manualBuffs.length > 0 ? `?buffs=${manualBuffs.join(",")}` : "";
-        const res = await fetch(`/api/yield${qs}`);
-        const json = await res.json();
-        if (!res.ok) throw new Error(json.error ?? "Failed to load yields");
+        // Fetch yields + farm in parallel; missing farm shouldn't block yields.
+        const [yieldRes, farmRes] = await Promise.all([
+          fetch(`/api/yield${qs}`),
+          fetch("/api/farm").catch(() => null),
+        ]);
+        const yieldJson = await yieldRes.json();
+        if (!yieldRes.ok) throw new Error(yieldJson.error ?? "Failed to load yields");
         if (cancelled) return;
-        setRows(json.rows ?? []);
-        setDetectedBuffs(json.detectedBuffs ?? []);
+        setRows(yieldJson.rows ?? []);
+        setDetectedBuffs(yieldJson.detectedBuffs ?? []);
         setMeta({
-          fetchedAt: json.fetchedAt,
-          flowerToUsd: json.flowerToUsd,
-          unpriced: json.unpriced ?? [],
+          fetchedAt: yieldJson.fetchedAt,
+          flowerToUsd: yieldJson.flowerToUsd,
+          unpriced: yieldJson.unpriced ?? [],
         });
+        if (farmRes && farmRes.ok) {
+          const farmJson = await farmRes.json();
+          if (!cancelled && farmJson?.balances) setBalances(farmJson.balances);
+        }
       } catch (e) {
         if (!cancelled) setError(e instanceof Error ? e.message : String(e));
       } finally {
@@ -120,6 +130,16 @@ export default function YieldPage() {
       cancelled = true;
     };
   }, [manualBuffs]);
+
+  /**
+   * Resolves the seed/plant name for a produce. Most produce share the
+   * pattern '<name> Seed' (Sunflower -> Sunflower Seed) but bushes use
+   * '<name> Plant' (Banana -> Banana Plant).
+   */
+  const seedName = (produce: YieldRow) =>
+    produce.isBush && produce.name === "Banana"
+      ? "Banana Plant"
+      : `${produce.name} Seed`;
 
   /** Detect chain conflicts so we can warn Master in the picker. */
   const chainConflicts = useMemo(() => {
@@ -356,6 +376,7 @@ export default function YieldPage() {
                 <th className="text-center px-3 py-2.5">Trend 24h</th>
                 <th className="text-right px-3 py-2.5">$FLOWER/jam</th>
                 <th className="text-right px-3 py-2.5">Buff Δ</th>
+                <th className="text-right px-3 py-2.5">Stok</th>
                 <th className="text-right px-3 py-2.5">/ 24h</th>
                 <th className="text-right px-3 py-2.5">Net/jam</th>
                 <th className="text-right px-3 py-2.5">Payback benih</th>
@@ -422,6 +443,27 @@ export default function YieldPage() {
                       );
                     })()}
                   </td>
+                  <td className="px-3 py-2 text-right font-mono text-[10px]">
+                    {(() => {
+                      const seeds = balances[seedName(r)] ?? 0;
+                      const harvest = balances[r.name] ?? 0;
+                      if (!seeds && !harvest)
+                        return <span className="text-zinc-600">—</span>;
+                      return (
+                        <span
+                          className="inline-flex flex-col items-end gap-0"
+                          title={`${seeds} ${seedName(r)} · ${harvest} ${r.name} ready to sell`}
+                        >
+                          {seeds > 0 && (
+                            <span className="text-emerald-400/80">🌱 {seeds}</span>
+                          )}
+                          {harvest > 0 && (
+                            <span className="text-amber-300/80">{CAT_EMOJI[r.category]} {harvest}</span>
+                          )}
+                        </span>
+                      );
+                    })()}
+                  </td>
                   <td className="px-3 py-2 text-right font-mono text-xs text-zinc-400">
                     {r.hasP2P ? r.dailyFlower.toFixed(3) : "—"}
                   </td>
@@ -454,6 +496,10 @@ export default function YieldPage() {
           )}
         </div>
       )}
+
+      {/* Full inventory (searchable, categorized) — same component used on the
+          dashboard. Renders only when farm balances are available. */}
+      {Object.keys(balances).length > 0 && <InventoryPanel balances={balances} />}
 
       <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3 text-xs text-amber-200/80">
         <div className="font-medium text-amber-300 mb-1">Catatan perhitungan</div>
