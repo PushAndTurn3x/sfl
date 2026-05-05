@@ -177,6 +177,11 @@ interface JwtFetchResult<T = unknown> {
   gated: boolean;
   data: T | null;
   fetchedAt: number;
+  /** First ~500 chars of upstream body when ok=false. Useful for surfacing
+   *  SFL-side error messages (e.g. missing farmId param). */
+  errorBody?: string;
+  /** The full upstream URL we hit, for debug display. */
+  url?: string;
 }
 
 /** Generic JWT GET helper that respects the same in-memory cache. */
@@ -207,6 +212,7 @@ async function jwtGet<T = unknown>(
     let status = 0;
     let data: T | null = null;
     let ok = false;
+    let errorBody: string | undefined;
     try {
       const res = await fetch(url, { headers, cache: "no-store" });
       status = res.status;
@@ -217,9 +223,17 @@ async function jwtGet<T = unknown>(
         } catch {
           data = null;
         }
+      } else {
+        try {
+          const text = await res.text();
+          errorBody = text.slice(0, 500);
+        } catch {
+          // ignore body read failures
+        }
       }
     } catch (e) {
       console.warn(`[marketplace-jwt] ${path} threw`, e);
+      errorBody = e instanceof Error ? e.message : String(e);
     }
     const result: JwtFetchResult<T> = {
       ok,
@@ -227,6 +241,8 @@ async function jwtGet<T = unknown>(
       gated: status === 403,
       data,
       fetchedAt: Date.now(),
+      url,
+      ...(errorBody ? { errorBody } : {}),
     };
     if (ok) {
       cache.set(cacheKey, {

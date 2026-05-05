@@ -43,7 +43,12 @@ export async function GET(req: NextRequest) {
     }
     if (!result.ok) {
       return NextResponse.json(
-        { error: `Upstream returned status ${result.status}`, status: result.status },
+        {
+          error: `Upstream returned status ${result.status}`,
+          status: result.status,
+          upstreamUrl: result.url,
+          upstreamBody: result.errorBody,
+        },
         { status: 502 },
       );
     }
