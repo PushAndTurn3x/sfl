@@ -12,6 +12,7 @@
  */
 
 import { config } from "./config";
+import { resolveItemName } from "./item-ids";
 
 export const DEFAULT_FILTERS = [
   "collectibles",
@@ -40,6 +41,9 @@ export interface MarketplaceItem {
   supply?: number;
   /** Item image URL. */
   image?: string;
+  /** True when the name was successfully resolved from marketplace_items.json
+   *  (or synthesized for unique-supply buds); false for unknown IDs. */
+  resolved?: boolean;
   [key: string]: unknown;
 }
 
@@ -75,6 +79,22 @@ function jwtHeaders(): Record<string, string> | null {
   };
 }
 
+/**
+ * Each Bud in SFL is a unique NFT (each ID is one bud), so they will never
+ * appear in the static name map. We synthesize 'Bud #<id>' for visibility.
+ */
+function enrichWithName(items: MarketplaceItem[]): MarketplaceItem[] {
+  return items.map((it) => {
+    if (it.name) return it; // some endpoints already include name
+    const idNum = typeof it.id === "number" ? it.id : parseInt(String(it.id ?? ""), 10);
+    if (!Number.isFinite(idNum)) return it;
+    const isBud = it.collection === "buds";
+    const resolved = resolveItemName(idNum);
+    const name = resolved ?? (isBud ? `Bud #${idNum}` : `Unknown #${idNum}`);
+    return { ...it, name, resolved: Boolean(resolved) || isBud };
+  });
+}
+
 async function fetchCategoryFresh(filter: MarketplaceFilter): Promise<CategoryResult> {
   const headers = jwtHeaders();
   if (!headers) {
@@ -88,7 +108,7 @@ async function fetchCategoryFresh(filter: MarketplaceFilter): Promise<CategoryRe
   if (ok) {
     try {
       const json = (await res.json()) as { items?: MarketplaceItem[] };
-      if (Array.isArray(json?.items)) items = json.items;
+      if (Array.isArray(json?.items)) items = enrichWithName(json.items);
     } catch {
       // swallow — leave items empty on parse failure
     }
@@ -141,6 +161,8 @@ export async function getAllMarketplace(
 ): Promise<{
   fetchedAt: number;
   totalItems: number;
+  resolvedCount: number;
+  unresolvedCount: number;
   byCategory: Record<string, MarketplaceItem[]>;
   failed: Array<{ filter: string; status: number }>;
 }> {
@@ -151,13 +173,26 @@ export async function getAllMarketplace(
   const byCategory: Record<string, MarketplaceItem[]> = {};
   const failed: Array<{ filter: string; status: number }> = [];
   let totalItems = 0;
+  let resolvedCount = 0;
+  let unresolvedCount = 0;
   for (const r of results) {
     if (r.ok) {
       byCategory[String(r.filter)] = r.items;
       totalItems += r.items.length;
+      for (const it of r.items) {
+        if (it.resolved) resolvedCount++;
+        else unresolvedCount++;
+      }
     } else {
       failed.push({ filter: String(r.filter), status: r.status });
     }
   }
-  return { fetchedAt: Date.now(), totalItems, byCategory, failed };
+  return {
+    fetchedAt: Date.now(),
+    totalItems,
+    resolvedCount,
+    unresolvedCount,
+    byCategory,
+    failed,
+  };
 }
